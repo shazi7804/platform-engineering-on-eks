@@ -1,0 +1,1 @@
+"use strict";(()=>{(self.webpackChunkapp=self.webpackChunkapp||[]).push([[8764],{8764:(d,s,i)=>{i.r(s),i.d(s,{ApiDefinitionCard:()=>n.EF,ApiTypeTitle:()=>n.Su,defaultDefinitionWidgets:()=>n.QB});var n=i(13924),t=i(85668)}}]);})();

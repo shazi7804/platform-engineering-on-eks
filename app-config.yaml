@@ -1,0 +1,15 @@
+app:
+  baseUrl: https://demo.backstage.shazi.info
+backend:
+  baseUrl: https://demo.backstage.shazi.info
+catalog:
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow: [Component, System, API, Resource, Location, Template]
+  locations:
+    - type: file
+      target: ../../examples/entities.yaml
+    - type: file
+      target: ../../all-catalogs.yaml

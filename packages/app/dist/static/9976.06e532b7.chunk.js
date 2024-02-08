@@ -1,0 +1,1 @@
+"use strict";(()=>{(self.webpackChunkapp=self.webpackChunkapp||[]).push([[9976],{29976:(d,s,n)=>{n.r(s),n.d(s,{ConsumingComponentsCard:()=>C.mA,ProvidingComponentsCard:()=>C.li});var C=n(13924),a=n(85668)}}]);})();
