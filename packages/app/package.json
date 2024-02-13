@@ -13,6 +13,11 @@
     "test": "backstage-cli package test",
     "lint": "backstage-cli package lint"
   },
+  "dependencies": {
+    "@backstage/plugin-github-actions": "^0.6.10",
+    "@backstage/plugin-kubernetes": "^0.11.4",
+    "@backstage/integration-aws-node": "^0.1.8"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

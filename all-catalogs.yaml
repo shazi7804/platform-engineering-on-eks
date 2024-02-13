@@ -5,5 +5,5 @@ metadata:
   description: A collection of all Backstage entities, except users, groups, and templates
 spec:
   targets:
-    - ./teams/all-teams.yaml
-    - ./templates/all-templates.yaml
+    - ./catalog-entities/teams/all-teams.yaml
+    - ./catalog-entities/templates/all-templates.yaml

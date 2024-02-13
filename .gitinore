@@ -27,6 +27,9 @@ node_modules/
 # Node version directives
 .nvmrc
 
+# Python
+.python-version
+
 # dotenv environment variables file
 .env
 .env.test
@@ -34,6 +37,10 @@ node_modules/
 # Build output
 dist
 dist-types
+packages/*/dist
+packages/*/node_modules
+plugins/*/dist
+plugins/*/node_modules
 
 # Temporary change files created by Vim
 *.swp
@@ -49,3 +56,5 @@ site
 
 # vscode database functionality support files
 *.session.sql
+
+

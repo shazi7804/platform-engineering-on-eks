@@ -1,0 +1,10 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  description: Creates a Github repository
+  name: create-github-repository
+  title: Creates a Github repository
+spec:
+  owner: guest
+  type: service
+  parameters:

@@ -1,7 +1,73 @@
+organization:
+  name: Backstage Demo Site by Scott Liao
+
 app:
   baseUrl: https://demo.backstage.shazi.info
+
 backend:
   baseUrl: https://demo.backstage.shazi.info
+  listen:
+    port: 7007
+  csp:
+    connect-src: ["'self'", 'http:', 'https:']
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
+  cache:
+    store: memory
+  reading:
+    allow:
+      - host: github.com
+      - host: localhost
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: ${K8S_CLUSTER_URL}
+          name: ${K8S_CLUSTER_NAME}
+          authProvider: 'aws'
+
+
+
+auth:
+  providers:
+    github:
+      production:
+        clientId: ${AUTH_GITHUB_CLIENT_ID}
+        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+  aws:
+    mainAccount:
+        accessKeyId: ${AWS_ACCESS_KEY_ID}
+        secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+    accounts:
+        # Credentials can come from the AWS SDK's default creds chain
+        accountId: ${AWS_ACCOUNT_ID}
+        region: ${AWS_REGION}
+
+proxy:
+
+techdocs:
+  builder: 'local' # Alternatives - 'external'
+  generator:
+    runIn: 'docker' # Alternatives - 'local'
+  publisher:
+    type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
+
+scaffolder:
+  # see https://backstage.io/docs/features/software-templates/configuration for software template options
+
 catalog:
   import:
     entityFilename: catalog-info.yaml
@@ -10,6 +76,16 @@ catalog:
     - allow: [Component, System, API, Resource, Location, Template]
   locations:
     - type: file
-      target: ../../examples/entities.yaml
+      target: all-catalogs.yaml
+      rrules:
+        - [Component, System, API, Resource, Location, Template, User, Group]
+    # Examples
     - type: file
-      target: ../../all-catalogs.yaml
+      target: template/template.yaml
+    - type: file
+      target: examples/entities.yaml
+    - type: file
+      target: examples/org.yaml
+      rules:
+        - allow: [User, Group]
+

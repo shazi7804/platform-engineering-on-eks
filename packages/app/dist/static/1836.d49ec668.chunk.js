@@ -1,3 +1,0 @@
-"use strict";(()=>{(self.webpackChunkapp=self.webpackChunkapp||[]).push([[1836],{41836:(b,s,o)=>{o.r(s),o.d(s,{C:()=>l,c:()=>g});var u=o(50876),p=Object.defineProperty,d=(e,n)=>p(e,"name",{value:n,configurable:!0});function f(e,n){for(var a=0;a<n.length;a++){const r=n[a];if(typeof r!="string"&&!Array.isArray(r)){for(const t in r)if(t!=="default"&&!(t in e)){const c=Object.getOwnPropertyDescriptor(r,t);c&&Object.defineProperty(e,t,c.get?c:{enumerable:!0,get:()=>r[t]})}}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}d(f,"_mergeNamespaces");var i=(0,u.r)();const l=(0,u.g)(i),g=f({__proto__:null,default:l},[i])}}]);})();
-
-//# sourceMappingURL=1836.d49ec668.chunk.js.map
