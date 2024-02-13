@@ -2,6 +2,7 @@ organization:
   name: Backstage Demo Site by Scott Liao
 
 app:
+  title: Backstage Demo
   baseUrl: https://demo.backstage.shazi.info
 
 backend:
@@ -34,12 +35,10 @@ kubernetes:
           name: ${K8S_CLUSTER_NAME}
           authProvider: 'aws'
 
-
-
 auth:
   providers:
     github:
-      production:
+      development:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
 
@@ -72,18 +71,20 @@ catalog:
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
-  rules:
-    - allow: [Component, System, API, Resource, Location, Template]
   locations:
     - type: file
       target: all-catalogs.yaml
-      rrules:
-        - [Component, System, API, Resource, Location, Template, User, Group]
+      rules:
+        - allow: [Component, System, API, Resource, Location, Template, User, Group]
     # Examples
     - type: file
-      target: template/template.yaml
+      target: examples/template/template.yaml
+      rules:
+        - allow: [Template]
     - type: file
       target: examples/entities.yaml
+      rules:
+        - allow: [Component, System, API, Resource]
     - type: file
       target: examples/org.yaml
       rules:

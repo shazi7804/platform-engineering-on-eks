@@ -50,6 +50,8 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
+import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
+import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 // Custom plugins
 import {
@@ -57,9 +59,6 @@ import {
   EntityGithubActionsContent,
 } from '@backstage/plugin-github-actions';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
-
-import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
-import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -187,6 +186,8 @@ const serviceEntityPage = (
       <EntityKubernetesContent refreshIntervalMs={10000} />
     </EntityLayout.Route>
   </EntityLayout>
+
+  
 );
 
 const websiteEntityPage = (
