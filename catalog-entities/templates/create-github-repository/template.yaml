@@ -1,9 +1,10 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  description: Creates a Github Repository
   name: create-github-repository
   title: Creates a Github Repository
+  description: Creates a Github Repository
+  tags: ['github']
 spec:
   owner: guest
   type: service
@@ -27,16 +28,22 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              kind: Group
-    - title: Configuration Options
+              kind: User
+    - title: Configuration repository options
       properties:
         repoUrl: # need a place to store this entity information.
           title: Repository Location
           type: string
           ui:field: RepoUrlPicker
           ui:options:
-            allowedHosts:
-              - github.com
+            allowedOwners: ['shazi7804']
+            allowedHosts: ['github.com']
+        defaultBranch:
+          default: main
+          type: string
+        repoVisibility:
+          type: string
+          enum: ['private', 'public', 'internal']
   steps:
     - id: create-repo
       name: Create a Github Repository
@@ -58,7 +65,10 @@ spec:
       action: github:repo:push
       input:
         repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: main
+        defaultBranch: ${{ parameters.defaultBranch }}
+        repoVisibility: ${{ parameters.repoVisibility }}
+        gitAuthorName: ${{ user.entity.metadata.name }}
+        gitAuthorEmail: ${{ user.entity.spec.profile.email }}
 
     - id: wait
       name: Waiting for the repo to be ready

@@ -53,6 +53,8 @@ site
 
 # Sensitive credentials
 *-credentials.yaml
+assets/nginx/*.crt
+assets/nginx/*.key
 
 # vscode database functionality support files
 *.session.sql

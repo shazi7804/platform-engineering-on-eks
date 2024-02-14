@@ -1,5 +1,8 @@
 {
     "yaml.schemas": {
-        "https://json.schemastore.org/app-config.json": "file:///Users/scottlwk/Github/platform-engineering-with-backstage/catalog-entities/templates/create-github-repository/template.yaml"
+        "https://json.schemastore.org/app-config.json": [
+            "file:///Users/scottlwk/Github/platform-engineering-with-backstage/catalog-entities/templates/create-github-repository/template.yaml",
+            "file:///Users/scottlwk/Github/platform-engineering-with-backstage/catalog-entities/templates/example-ec2-by-terraform/template.yaml"
+        ]
     }
 }

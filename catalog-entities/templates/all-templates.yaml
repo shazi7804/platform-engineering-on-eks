@@ -6,6 +6,7 @@ metadata:
 spec:
     targets: 
       - ./example-nodejs-eks/template.yaml
+      - ./example-ec2-terraform/template.yaml
       - ./create-github-repository/template.yaml
     rules:
         - allow: [Template]

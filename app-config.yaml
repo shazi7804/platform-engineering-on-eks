@@ -3,10 +3,10 @@ organization:
 
 app:
   title: Backstage Demo
-  baseUrl: https://demo.backstage.shazi.info
+  baseUrl: https://localhost
 
 backend:
-  baseUrl: https://demo.backstage.shazi.info
+  baseUrl: https://localhost
   listen:
     port: 7007
   csp:

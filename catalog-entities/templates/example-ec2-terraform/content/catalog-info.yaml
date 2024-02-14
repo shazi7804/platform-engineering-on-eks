@@ -3,11 +3,10 @@ kind: Component
 metadata:
   name: ${{ values.name | dump }}
   annotations:
-    github.com/project-slug: sagar0419/aws-ec2 # name of the terraform repo
-    backstage.io/techdocs-ref: dir:.
-  title: 'IA for Instance Automation'
+    github.com/project-slug: ${{ values.repoUrl.owner + "/" + values.repoUrl.repo }}
+  title: ${{"Amazon EC2 Instance/" + values.InstanceName }}
   description: An example of a Instance Creation.
 spec:
   type: service
-  owner: user:guest
+  owner: ${{ values.owner | dump }}
   lifecycle: experimental

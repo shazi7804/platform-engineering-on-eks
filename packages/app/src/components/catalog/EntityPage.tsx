@@ -59,6 +59,23 @@ import {
   EntityGithubActionsContent,
 } from '@backstage/plugin-github-actions';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import { 
+  EntityGithubPullRequestsContent,
+  EntityGithubPullRequestsOverviewCard
+} from '@roadiehq/backstage-plugin-github-pull-requests';
+import { 
+  EntityGithubInsightsContent,
+  EntityGithubInsightsLanguagesCard,
+  EntityGithubInsightsReadmeCard,
+  EntityGithubInsightsReleasesCard,
+  isGithubInsightsAvailable
+} from '@roadiehq/backstage-plugin-github-insights';
+import {
+  EntitySecurityInsightsContent,
+  EntitySecurityInsightsCard,
+  isSecurityInsightsAvailable
+} from '@roadiehq/backstage-plugin-security-insights';
+
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -132,13 +149,33 @@ const overviewContent = (
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
-
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+    <Grid item md={6}>
+      <EntityGithubPullRequestsOverviewCard />
+    </Grid>
+    <Grid item md={6}>
+      <EntityGithubInsightsLanguagesCard />
+      <EntityGithubInsightsReleasesCard />
+    </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
+        <Grid item md={6}>
+          <EntityGithubInsightsReadmeCard maxHeight={350} />
+        </Grid>
+        </EntitySwitch.Case>
+    </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isSecurityInsightsAvailable}>
+        <Grid item md={6}>
+          <EntitySecurityInsightsCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 
@@ -185,6 +222,20 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={10000} />
     </EntityLayout.Route>
+
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+      <EntityGithubPullRequestsContent />
+    </EntityLayout.Route>
+    
+    <EntityLayout.Route path="/code-insights" title="Code Insights">
+      <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/security-insights" title="Security Insights">
+      <EntitySecurityInsightsContent />
+    </EntityLayout.Route>
+  
+
   </EntityLayout>
 
   
