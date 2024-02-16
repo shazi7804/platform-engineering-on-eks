@@ -4,7 +4,7 @@ metadata:
   name: platform-engineering-with-backstage
   annotations:
     github.com/project-slug: shazi7804/platform-engineering-with-backstage
-    backstage.io/kubernetes-id: backstage-app
+    backstage.io/kubernetes-id: backstage
     backstage.io/kubernetes-namespace: backstage
 spec:
   type: service
