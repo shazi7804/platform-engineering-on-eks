@@ -59,7 +59,8 @@ spec:
         InstanceImageId:
           title: Image id of Instance.
           type: string
-          description: Image id of the instance that you want to deploy.
+          description: Image id of the instance that you want to deploy. eg:- default is Amazon Linux 2023
+          default: 'ami-0e731c8a588258d0d'
         action:
           title: action
           type: string
@@ -104,13 +105,12 @@ spec:
 
     - id: publish
       name: Publishing Details
-      action: publish:github
+      action: github:repo:push
       input:
         allowedHosts: ['github.com']
         gitCommitMessage: "Requesting an Amazon EC2 instance '${{ parameters.InstanceName }}' through Backstage."
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: ${{ parameters.defaultBranch }}
-        repoVisibility: ${{ parameters.repoVisibility }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
 
@@ -118,7 +118,7 @@ spec:
       name: Starting GitHub action
       action: github:actions:dispatch
       input:
-        workflowId:  terraform-plan.yml # ID of GitHub action WorkFlow
+        workflowId:  terraform.yml
         repoUrl: ${{ parameters.repoUrl }}
         branchOrTagName: ${{ parameters.defaultBranch }}
         workflowInputs:

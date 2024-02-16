@@ -31,9 +31,16 @@ kubernetes:
   clusterLocatorMethods:
     - type: 'config'
       clusters:
-        - url: ${K8S_CLUSTER_URL}
-          name: ${K8S_CLUSTER_NAME}
+        - url: https://350198E3560CC3143DC526762BF5A14B.sk1.us-east-1.eks.amazonaws.com
+          name: backstage
           authProvider: 'aws'
+          caData: ${K8S_CA_DATA}
+aws:
+  mainAccount:
+  accounts:
+    - accountId: ${AWS_ACCOUNT_ID}
+      accessKeyId: ${AWS_ACCESS_KEY_ID}
+      secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
 
 auth:
   providers:
@@ -41,19 +48,13 @@ auth:
       development:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
-
 integrations:
   github:
     - host: github.com
       token: ${GITHUB_TOKEN}
-  aws:
-    mainAccount:
-        accessKeyId: ${AWS_ACCESS_KEY_ID}
-        secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
-    accounts:
-        # Credentials can come from the AWS SDK's default creds chain
-        accountId: ${AWS_ACCOUNT_ID}
-        region: ${AWS_REGION}
+
+costInsights:
+  engineerCost: 200000
 
 proxy:
 
