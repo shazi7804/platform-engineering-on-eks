@@ -25,22 +25,24 @@ backend:
       - host: github.com
       - host: localhost
 
-kubernetes:
-  serviceLocatorMethod:
-    type: 'multiTenant'
-  clusterLocatorMethods:
-    - type: 'config'
-      clusters:
-        - url: https://350198E3560CC3143DC526762BF5A14B.sk1.us-east-1.eks.amazonaws.com
-          name: backstage
-          authProvider: 'aws'
-          caData: ${K8S_CA_DATA}
-aws:
-  mainAccount:
-  accounts:
-    - accountId: ${AWS_ACCOUNT_ID}
-      accessKeyId: ${AWS_ACCESS_KEY_ID}
-      secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+# kubernetes:
+#   serviceLocatorMethod:
+#     type: 'multiTenant'
+#   clusterLocatorMethods:
+#     - type: 'config'
+#       clusters:
+#         - url: https://350198E3560CC3143DC526762BF5A14B.sk1.us-east-1.eks.amazonaws.com
+#           name: backstage
+#           authProvider: 'aws'
+#           caData: ${K8S_CA_DATA}
+#           authMetadata:
+#             kubernetes.io/x-k8s-aws-id: demo-blueprint
+# aws:
+#   mainAccount:
+#   accounts:
+#     - accountId: ${AWS_ACCOUNT_ID}
+#       accessKeyId: ${AWS_ACCESS_KEY_ID}
+#       secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
 
 auth:
   providers:

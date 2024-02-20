@@ -7,3 +7,4 @@ spec:
   targets:
     - ./catalog-entities/teams/all-teams.yaml
     - ./catalog-entities/templates/all-templates.yaml
+    - ./catalog-entities/teams/components.yaml

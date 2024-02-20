@@ -75,6 +75,10 @@ import {
   EntitySecurityInsightsCard,
   isSecurityInsightsAvailable
 } from '@roadiehq/backstage-plugin-security-insights';
+import { 
+  EntityEndOfLifeCard,
+  isEndOfLifeAvailable
+} from '@dweber019/backstage-plugin-endoflife';
 
 
 const techdocsContent = (
@@ -173,6 +177,20 @@ const overviewContent = (
       <EntitySwitch.Case if={isSecurityInsightsAvailable}>
         <Grid item md={6}>
           <EntitySecurityInsightsCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={hasLabels}>
+        <Grid item md={4} xs={12}>
+          <EntityLabelsCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isEndOfLifeAvailable}>
+        <Grid item md={6}>
+          <EntityEndOfLifeCard />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>

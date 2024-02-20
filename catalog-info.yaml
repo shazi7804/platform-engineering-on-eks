@@ -6,6 +6,7 @@ metadata:
     github.com/project-slug: shazi7804/platform-engineering-with-backstage
     backstage.io/kubernetes-id: backstage
     backstage.io/kubernetes-namespace: backstage
+    endoflife.date/products: nodejs@18,postgresql@15.5
 spec:
   type: service
   lifecycle: production
